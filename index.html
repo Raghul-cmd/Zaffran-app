@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaffran – Modern Indian Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <a href="#" class="nav-logo">Zaffran</a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#reservations">Reserve</a>
+    </div>
+    <button class="cart-btn" id="cartBtn">
+      <span class="cart-icon">◎</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Chennai · Est. 2018</p>
+      <h1 class="hero-headline">Food worth<br /><em>remembering</em></h1>
+      <p class="hero-sub">Slow-cooked, wood-fired, made by hand.<br />A modern Indian kitchen in the heart of the city.</p>
+      <div class="hero-ctas">
+        <a href="#menu" class="btn-primary">Order Now</a>
+        <a href="#reservations" class="btn-ghost">Book a Table</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">scroll</div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <div class="strip">
+    <div class="strip-item"><span class="strip-num">48</span><span>dishes on the menu</span></div>
+    <div class="strip-divider"></div>
+    <div class="strip-item"><span class="strip-num">4.9</span><span>average rating</span></div>
+    <div class="strip-divider"></div>
+    <div class="strip-item"><span class="strip-num">30</span><span>min delivery</span></div>
+    <div class="strip-divider"></div>
+    <div class="strip-item"><span class="strip-num">100%</span><span>fresh ingredients</span></div>
+  </div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="section-header">
+      <p class="section-eyebrow">What we cook</p>
+      <h2 class="section-title">The Menu</h2>
+    </div>
+
+    <div class="category-tabs" id="categoryTabs">
+      <button class="tab active" data-cat="all">All</button>
+      <button class="tab" data-cat="starters">Starters</button>
+      <button class="tab" data-cat="mains">Mains</button>
+      <button class="tab" data-cat="breads">Breads</button>
+      <button class="tab" data-cat="desserts">Desserts</button>
+      <button class="tab" data-cat="drinks">Drinks</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <!-- Populated by JS -->
+      <div class="menu-loading">Loading menu…</div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="story-img-col">
+      <div class="story-img-block img-1"></div>
+      <div class="story-img-block img-2"></div>
+    </div>
+    <div class="story-text-col">
+      <p class="section-eyebrow">Who we are</p>
+      <h2 class="section-title">A kitchen with<br /><em>deep roots</em></h2>
+      <p>Zaffran started as a single tandoor oven in a South Chennai home kitchen. Today, the same family recipes — cooked with the same unhurried care — feed hundreds of people each evening.</p>
+      <p>We source our spices directly from farms in Kerala and Rajasthan, our bread dough is started fresh every morning, and nothing leaves our kitchen that we wouldn't serve at our own table.</p>
+      <div class="story-sig">— Meera & Arjun Krishnamurthy, Founders</div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <p class="section-eyebrow">What guests say</p>
+      <h2 class="section-title">The table speaks</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="t-text">"The dal makhani has ruined every other restaurant's version for me. I order it every single time."</p>
+        <p class="t-name">Priya S. · Adyar</p>
+        <div class="t-stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card featured">
+        <p class="t-text">"Drove 40 minutes specifically for the wood-fired naan. Worth every minute. Worth twice as long."</p>
+        <p class="t-name">Rahul M. · Velachery</p>
+        <div class="t-stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="t-text">"Ordered for a dinner party of 12 — every single person asked me for the contact. That says it all."</p>
+        <p class="t-name">Ananya K. · Nungambakkam</p>
+        <div class="t-stars">★★★★★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATIONS -->
+  <section class="reservation-section" id="reservations">
+    <div class="reservation-inner">
+      <div class="section-header light">
+        <p class="section-eyebrow">Dine in</p>
+        <h2 class="section-title">Book a Table</h2>
+        <p class="reservation-sub">We hold tables for up to 15 minutes. Walk-ins always welcome.</p>
+      </div>
+      <div class="res-form-wrap" id="resFormWrap">
+        <div class="res-form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="resName" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="resPhone" placeholder="+91 00000 00000" />
+          </div>
+        </div>
+        <div class="res-form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="resDate" />
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <select id="resTime">
+              <option>12:30 PM</option>
+              <option>1:00 PM</option>
+              <option>1:30 PM</option>
+              <option>7:00 PM</option>
+              <option>7:30 PM</option>
+              <option>8:00 PM</option>
+              <option>8:30 PM</option>
+              <option>9:00 PM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Guests</label>
+            <select id="resGuests">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6+</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary full" id="reserveBtn">Confirm Reservation</button>
+        <p class="form-note" id="resMsg"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Zaffran</div>
+        <p>Modern Indian Kitchen<br />Chennai, Tamil Nadu</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <strong>Visit</strong>
+          <p>12, Lattice Bridge Road<br />Adyar, Chennai 600020</p>
+          <p>+91 44 2345 6789</p>
+        </div>
+        <div>
+          <strong>Hours</strong>
+          <p>Lunch: 12 PM – 3 PM<br />Dinner: 7 PM – 11 PM</p>
+          <p>Open daily</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Zaffran. All rights reserved.</p>
+      <p>Payments secured by Razorpay</p>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">₹0</span>
+      </div>
+      <div class="cart-subtotal">
+        <span>Taxes & fees (5%)</span>
+        <span id="cartTax">₹0</span>
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <div class="delivery-input">
+        <input type="text" id="deliveryAddr" placeholder="Delivery address" />
+        <input type="tel" id="customerPhone" placeholder="Your phone number" />
+        <input type="text" id="customerName" placeholder="Your name" />
+      </div>
+      <button class="btn-primary full" id="checkoutBtn">Pay with Razorpay</button>
+    </div>
+  </aside>
+
+  <!-- SUCCESS TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- Supabase via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
