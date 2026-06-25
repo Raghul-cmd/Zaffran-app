@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaffran Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <div class="login-logo">Zaffran</div>
+      <p class="login-sub">Admin Dashboard</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@zaffran.com" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" />
+      </div>
+      <button class="btn-primary" id="loginBtn">Sign In</button>
+      <p class="login-err" id="loginErr"></p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">Zaffran</div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-page="overview">
+          <span class="nav-icon">◈</span> Overview
+        </button>
+        <button class="nav-item" data-page="orders">
+          <span class="nav-icon">◎</span> Orders
+        </button>
+        <button class="nav-item" data-page="menu">
+          <span class="nav-icon">◇</span> Menu
+        </button>
+        <button class="nav-item" data-page="reservations">
+          <span class="nav-icon">◉</span> Reservations
+        </button>
+      </nav>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- TOP BAR -->
+      <div class="topbar">
+        <div>
+          <h1 class="page-title" id="pageTitle">Overview</h1>
+          <p class="page-date" id="pageDate"></p>
+        </div>
+        <div class="topbar-right">
+          <span class="admin-badge" id="adminEmail"></span>
+          <a href="index.html" class="view-site-btn" target="_blank">View site ↗</a>
+        </div>
+      </div>
+
+      <!-- OVERVIEW PAGE -->
+      <div class="page active" id="page-overview">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Today's Orders</p>
+            <p class="stat-val" id="stat-orders">—</p>
+            <p class="stat-sub">total orders today</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Today's Revenue</p>
+            <p class="stat-val" id="stat-revenue">—</p>
+            <p class="stat-sub">from paid orders</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Reservations</p>
+            <p class="stat-val" id="stat-res">—</p>
+            <p class="stat-sub">pending today</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Menu Items</p>
+            <p class="stat-val" id="stat-menu">—</p>
+            <p class="stat-sub">active dishes</p>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <h2>Recent Orders</h2>
+          </div>
+          <div id="recentOrdersList"></div>
+        </div>
+      </div>
+
+      <!-- ORDERS PAGE -->
+      <div class="page" id="page-orders">
+        <div class="toolbar">
+          <div class="filter-tabs" id="orderFilterTabs">
+            <button class="ftab active" data-status="all">All</button>
+            <button class="ftab" data-status="pending">Pending</button>
+            <button class="ftab" data-status="paid">Paid</button>
+            <button class="ftab" data-status="preparing">Preparing</button>
+            <button class="ftab" data-status="delivered">Delivered</button>
+          </div>
+        </div>
+        <div class="section-card">
+          <div id="ordersList"></div>
+        </div>
+      </div>
+
+      <!-- MENU PAGE -->
+      <div class="page" id="page-menu">
+        <div class="toolbar">
+          <button class="btn-primary small" id="addDishBtn">+ Add Dish</button>
+        </div>
+
+        <!-- Add/Edit Form -->
+        <div class="section-card" id="dishFormCard" style="display:none">
+          <div class="section-card-header">
+            <h2 id="dishFormTitle">Add New Dish</h2>
+            <button class="icon-btn" id="closeDishForm">✕</button>
+          </div>
+          <div class="dish-form">
+            <input type="hidden" id="editDishId" />
+            <div class="form-row">
+              <div class="form-group">
+                <label>Dish Name</label>
+                <input type="text" id="dishName" placeholder="e.g. Butter Chicken" />
+              </div>
+              <div class="form-group">
+                <label>Price (₹)</label>
+                <input type="number" id="dishPrice" placeholder="480" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Category</label>
+                <select id="dishCategory">
+                  <option value="starters">Starters</option>
+                  <option value="mains">Mains</option>
+                  <option value="breads">Breads</option>
+                  <option value="desserts">Desserts</option>
+                  <option value="drinks">Drinks</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Type</label>
+                <select id="dishVeg">
+                  <option value="true">Vegetarian</option>
+                  <option value="false">Non-Vegetarian</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label>Description</label>
+              <textarea id="dishDesc" placeholder="Short description of the dish..." rows="2"></textarea>
+            </div>
+            <div class="form-group full">
+              <label>Image URL</label>
+              <input type="text" id="dishImage" placeholder="https://images.unsplash.com/..." />
+            </div>
+            <div class="form-actions">
+              <button class="btn-primary" id="saveDishBtn">Save Dish</button>
+              <button class="btn-ghost-dark" id="cancelDishBtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div id="menuList"></div>
+        </div>
+      </div>
+
+      <!-- RESERVATIONS PAGE -->
+      <div class="page" id="page-reservations">
+        <div class="section-card">
+          <div id="reservationsList"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="adminToast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
