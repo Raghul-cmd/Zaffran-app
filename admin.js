@@ -236,13 +236,6 @@ function renderMenuList() {
       </div>`;
   }).join('');
 
-  // attach listeners properly
-  el.querySelectorAll('[data-edit]').forEach(btn => {
-    btn.addEventListener('click', () => openEditForm(+btn.dataset.edit));
-  });
-  el.querySelectorAll('[data-del]').forEach(btn => {
-    btn.addEventListener('click', () => deleteDish(+btn.dataset.del));
-  });
 }
 
 function setupMenuForm() {
