@@ -236,6 +236,13 @@ function renderMenuList() {
       </div>`;
   }).join('');
 
+  // ── attach edit / delete listeners after rendering ──
+  el.querySelectorAll('[data-edit]').forEach(btn => {
+    btn.addEventListener('click', () => openEditForm(btn.dataset.edit));
+  });
+  el.querySelectorAll('[data-del]').forEach(btn => {
+    btn.addEventListener('click', () => deleteDish(btn.dataset.del));
+  });
 }
 
 function setupMenuForm() {
@@ -263,7 +270,7 @@ function clearDishForm() {
 }
 
 function openEditForm(id) {
-  const item = allMenu.find(i => i.id === id);
+  const item = allMenu.find(i => String(i.id) === String(id));
   if (!item) return;
   document.getElementById('dishFormTitle').textContent = 'Edit Dish';
   document.getElementById('editDishId').value  = item.id;
@@ -311,7 +318,7 @@ async function saveDish() {
 
 async function deleteDish(id) {
   if (!confirm('Delete this dish? This cannot be undone.')) return;
-  const { error } = await db.from('menu_items').delete().eq('id', id);
+  const { error } = await db.from('menu_items').delete().eq('id', String(id));
   if (error) { showToast('Error deleting dish'); return; }
   showToast('Dish deleted');
   loadMenuAdmin();
